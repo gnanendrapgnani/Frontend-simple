@@ -46,7 +46,7 @@ function App() {
           )}
         </Router>
       </ErrorBoundary>
-      <Toaster richColors />
+      <Toaster richColors position="top-right" />
     </ThemeProvider>
   );
 }

@@ -87,6 +87,10 @@ const SignUpPage = () => {
         toast.success("Signup successful!", {
           className: "bg-green-500 text-white",
         });
+        sessionStorage.clear();
+        sessionStorage.setItem("isLogin", "true");
+        window.location.href = "/";
+        return;
       }
     } catch (error) {
       console.log("Registration error:", error.response.data);

@@ -39,23 +39,37 @@ const LoginPage = () => {
       const response = await axios.post(API, formData, {
         headers: { "Content-Type": "application/json" },
       });
+
       console.log(response.data);
+
       if (response.data.status === "success") {
         sessionStorage.clear();
         sessionStorage.setItem("isLogin", "true");
-        toast.success("Login Successfully", { className: "text-green-300" });
+
+        toast.success("Login Successful", {
+          className: "bg-green-500 text-white",
+        });
+
         window.location.href = "/";
         return;
-      } else {
-        toast.error("Invalid email & Password", {
-          className: "text-red-300",
+      }
+
+      if (response.data.status === "error") {
+        toast.error(response.data.message || "Login failed", {
+          className: "bg-red-500 text-white",
         });
+        return;
       }
     } catch (error) {
-      console.log(error);
-      toast.error("Invalid email & Password", {
-        className: "text-red-300",
-      });
+      console.error("Login error:", error);
+
+      toast.error(
+        error?.response?.data?.message ||
+          "Something went wrong, try again later",
+        {
+          className: "bg-red-500 text-white",
+        }
+      );
     }
   };
 
