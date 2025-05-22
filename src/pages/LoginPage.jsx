@@ -43,9 +43,8 @@ const LoginPage = () => {
       console.log(response.data);
 
       if (response.data.status === "success") {
-        sessionStorage.clear();
         sessionStorage.setItem("isLogin", "true");
-
+        sessionStorage.setItem("user", JSON.stringify(formData.email));
         toast.success("Login Successful", {
           className: "bg-green-500 text-white",
         });

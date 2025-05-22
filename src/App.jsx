@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import HomrPage from "./pages/HomrPage";
 import SittingPage from "./pages/SittingPAge";
 import ForgotPassword from "./pages/ForgotPassword";
+import CategoryCreation from "./pages/CourseCreation/CategoryCreation";
 
 function App() {
   const [isLogin, setIsLogin] = useState(false);
@@ -41,6 +42,10 @@ function App() {
                 <Route path="/error" element={<ErrorPage />} />
                 <Route path="/" element={<HomrPage />} />
                 <Route path="/sitting" element={<SittingPage />} />
+                <Route
+                  path="/category-creation"
+                  element={<CategoryCreation />}
+                />
               </Routes>
             </Layout>
           )}
