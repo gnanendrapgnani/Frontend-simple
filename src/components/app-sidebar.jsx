@@ -7,6 +7,7 @@ import {
   Settings,
   ChevronDown,
   ChevronRight,
+  User,
 } from "lucide-react";
 
 import {
@@ -120,10 +121,7 @@ export function AppSidebar() {
         <Card>
           <CardContent>
             <div className="flex items-center gap-2">
-              <img
-                src="https://via.placeholder.com/40"
-                className="rounded-full"
-              />
+              <User size={32} />
               <div>
                 <h3 className="text-sm font-semibold">John Doe</h3>
                 <p className="text-xs text-gray-500">
