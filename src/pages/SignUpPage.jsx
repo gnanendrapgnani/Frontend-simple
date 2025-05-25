@@ -74,7 +74,7 @@ const SignUpPage = () => {
     e.preventDefault();
     if (!validate()) return;
     try {
-      const APILINK = `${import.meta.env.VITE_BASE_URL}/student-register`;
+      const APILINK = `${import.meta.env.VITE_BASE_URL}/api/admin/register`;
 
       const response = await axios.post(APILINK, formData, {
         headers: {
@@ -82,7 +82,7 @@ const SignUpPage = () => {
         },
       });
 
-      console.log("Registration successful:", response.data);
+      // console.log("Registration successful:", response.data);
       if (response.data.status === "success") {
         toast.success("Signup successful!", {
           className: "bg-green-500 text-white",
@@ -93,10 +93,15 @@ const SignUpPage = () => {
         return;
       }
     } catch (error) {
-      console.log("Registration error:", error.response.data);
-      toast.error(error.response.data.message, {
-        className: "bg-red-500 text-white",
-      });
+      // console.log("Registration error:", error);
+      toast.error(
+        error.response?.data?.message ||
+          error.message ||
+          "Something went wrong",
+        {
+          className: "bg-red-500 text-white",
+        }
+      );
     }
   };
 
